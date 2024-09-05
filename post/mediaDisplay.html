@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uploaded Media</title>
+  <style>
+    /* Basic styling for the media display */
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .media-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .media-item {
+      margin: 10px;
+    }
+
+    .media-item img, .media-item video, .media-item audio {
+      max-width: 300px;
+      max-height: 300px;
+      display: block;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Uploaded Media</h1>
+
+    <!-- Display Media -->
+    <div id="mediaDisplay" class="media-display"></div>
+
+    <button class="back-btn" onclick="goBack()">Back to Upload Page</button>
+  </div>
+
+  <script>
+    // Fetch media from the server and display it
+    fetch('http://localhost:3000/uploaads')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(files => {
+        const displayArea = document.getElementById('mediaDisplay');
+        if (files.length === 0) {
+          displayArea.innerText = 'No media files found.';
+          return;
+        }
+
+        files.forEach(file => {
+          let mediaElement;
+
+          // Determine the media type
+          if (file.match(/\.(jpg|jpeg|png|gif)$/i)) {
+            mediaElement = document.createElement('img');
+          } else if (file.match(/\.(mp4|webm|ogg)$/i)) {
+            mediaElement = document.createElement('video');
+            mediaElement.controls = true;
+          } else if (file.match(/\.(mp3|wav|ogg)$/i)) {
+            mediaElement = document.createElement('audio');
+            mediaElement.controls = true;
+          } else {
+            console.warn(`Unsupported file type: ${file}`);
+            return; // Skip unsupported file types
+          }
+
+          // Set the source and add to the display area
+          mediaElement.src = `http://localhost:3000/uploads/${file}`;
+          displayArea.appendChild(createMediaItem(mediaElement));
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching media:', error);
+        document.getElementById('mediaDisplay').innerText = `Failed to load media. Error: ${error.message}`;
+      });
+
+    function createMediaItem(mediaElement) {
+      const mediaItemDiv = document.createElement('div');
+      mediaItemDiv.classList.add('media-item');
+      mediaItemDiv.appendChild(mediaElement);
+      return mediaItemDiv;
+    }
+
+    function goBack() {
+      window.location.href = '../home2.html'; // Go back to upload page
+    }
+  </script>
+</body>
+</html>

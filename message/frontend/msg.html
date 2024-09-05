@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add styles for the popup modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 400px;
+        }
+
+        .modal-header {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: black;
+        }
+
+        /* Style for the emergency contact dropdown */
+        #emergency-select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #contact-emergency {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #contact-emergency:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Emergency Contacts</h1>
+    </header>
+
+    <div class="container">
+        <div class="chat-window">
+            <div class="chat-area">
+                <div class="chat-messages" id="chat-messages"></div>
+            </div>
+            <div class="user-input">
+                <input type="text" id="message-input" placeholder="Type a message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Button to open the modal -->
+    <div class="emergency-container">
+        <button id="emergency-button">Emergency Contact</button>
+    </div>
+
+    <!-- Emergency Contact Modal -->
+    <div id="emergencyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">Emergency Contact</div>
+            <select id="emergency-select">
+                <option value="fire">Fire Department</option>
+                <option value="police">Police</option>
+                <option value="ambulance">Ambulance</option>
+            </select>
+            <button id="contact-emergency">Contact</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

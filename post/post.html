@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Upload Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .upload-form {
+      margin-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .upload-section {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .upload-section label {
+      display: block;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .upload-section input {
+      display: block;
+    }
+
+    button.upload-btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button.upload-btn:hover {
+      background-color: #45a049;
+    }
+
+    .media-display {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .media-item {
+      width: 200px;
+      text-align: center;
+    }
+
+    .media-item img,
+    .media-item video,
+    .media-item audio {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Upload and Display Media</h1>
+
+    <!-- Upload Form -->
+    <div class="upload-form">
+      <form id="uploadForm" action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+        <div class="upload-section">
+          <label for="imageUpload">Upload Image:</label>
+          <input type="file" id="imageUpload" name="media" accept="image/*">
+        </div>
+
+        <div class="upload-section">
+          <label for="videoUpload">Upload Video:</label>
+          <input type="file" id="videoUpload" name="media" accept="video/*">
+        </div>
+
+        <div class="upload-section">
+          <label for="audioUpload">Upload Audio:</label>
+          <input type="file" id="audioUpload" name="media" accept="audio/*">
+        </div>
+
+        <button type="submit" class="upload-btn">Upload Media</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
