@@ -6,7 +6,7 @@ https://astro-saurav.github.io/RescueRadars/
 
 **RescueRadars** is a real-time crowdsourced reporting platform designed to enhance disaster response efficiency. By leveraging data from affected individuals, RescueRadars aims to provide timely, accurate information about natural disasters to help communities respond more effectively.
 
-![RescueRadars](https://astro-saurav.github.io/RescueRadars/)
+[RescueRadars](https://astro-saurav.github.io/RescueRadars/)
 
 ## Features
 
