@@ -59,7 +59,7 @@ We welcome contributions to improve RescueRadars! To contribute:
     ```
 4. **Make your changes** and commit them:
     ```bash
-    git commit -m "Add your message here"
+    git commit -m 
     ```
 5. **Push to your branch**:
     ```bash
